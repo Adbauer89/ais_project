@@ -8,17 +8,17 @@ const Map = ({ currentZoom, setCurrentZoom }: {currentZoom: number, setCurrentZo
         switch (currentZoom) {
             case 1:
                 images = <Fragment>
-                    <img src={`./resources/ROOT.png`} className={`map-image`}/>
+                    <img src={`./resources/ROOT.png`} className={`map-image`} alt={``}/>
                 </Fragment>
                 break;
             case 2:
                 images = <Fragment>
-                    <img src={`./resources/38G0.png`} className={`map-image`}/>
+                    <img src={`./resources/38G0.png`} className={`map-image`} alt={``}/>
                 </Fragment>
                 break;
             case 3:
                 images = <Fragment>
-                    <img src={`./resources/38G01.png`} className={`map-image`}/>
+                    <img src={`./resources/38G01.png`} className={`map-image`} alt={``}/>
                 </Fragment>
                 break;
 
