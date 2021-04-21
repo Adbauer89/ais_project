@@ -1,6 +1,7 @@
 import {Model} from './Model';
 
 export default class Tile implements Model {
+    id: number = 0;
     ices_name: string | null = null;
     west: number | null = null;
     south: number | null = null;
@@ -15,13 +16,16 @@ export default class Tile implements Model {
     image_north: number | null = null;
     image_south: number | null = null;
     contained_by: number | null = null;
+    image_file: string | null = null;
 
     private constructor() {}
 
     public static fromJson(jsonString: string): Tile {
         const json = JSON.parse(jsonString)
         const builder = new this.Builder();
-        return builder.setIcesName(json["ICESName"] ?? null)
+
+        return builder.setId(json["id"] ?? null)
+            .setIcesName(json["ICESName"] ?? null)
             .setWest(json["west"] ?? null)
             .setEast(json["east"] ?? null)
             .setSouth(json["south"] ?? null)
@@ -35,6 +39,7 @@ export default class Tile implements Model {
             .setImageNorth(json["image_north"] ?? null)
             .setImageSouth(json["image_south"] ?? null)
             .setContainedBy(json["contained_by"] ?? null)
+            .setImageFile(json["image_file"] ?? null)
             .build();
     }
 
@@ -44,6 +49,11 @@ export default class Tile implements Model {
 
         constructor() {
             this.tile = new Tile();
+        }
+
+        setId(id: number) {
+            this.tile.id = id;
+            return this;
         }
 
         setIcesName(ices_name: string) {
@@ -113,6 +123,11 @@ export default class Tile implements Model {
 
         setContainedBy(contained_by: number) {
             this.tile.contained_by = contained_by;
+            return this;
+        }
+
+        setImageFile(image_file: string) {
+            this.tile.image_file = image_file;
             return this;
         }
 

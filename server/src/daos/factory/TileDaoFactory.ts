@@ -2,11 +2,12 @@ import TileDaoMongo from "../mongo/TileDaoMongo";
 import Mongo from "../databases/Mongo";
 import {DatabaseConfig} from "../../config/DatabaseConfig";
 import InvalidDatabaseConfigException from "../exceptions/InvalidDatabaseConfigException";
-import CrudDao from "../interface/CrudDao";
-import Tile from "../../models/Tile";
+// import Tile from "../../models/Tile";
+import TileDao from "../interface/TileDao";
 
 export default class TileDaoFactory {
-    static async getTileDao(databaseConfig: DatabaseConfig) : Promise<CrudDao<Tile>>
+    // @ts-ignore
+    static async getTileDao(databaseConfig: DatabaseConfig): Promise<TileDao>
     {
         switch (databaseConfig.type) {
             case 'mongo':
