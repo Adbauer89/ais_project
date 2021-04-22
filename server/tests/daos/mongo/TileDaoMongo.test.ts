@@ -92,4 +92,32 @@ describe('TileDaoMongo', function () {
             expect(updatedTile.filename).to.be.equal('43F9-after.png');
         });
     });
+
+    describe('delete()', function () {
+        it('should delete an existing document', async function () {
+            await insertTestTiles();
+            await tileDaoMongo.delete('a1-b2-c3-d4z');
+            const tileCount = await database.collection('tiles').countDocuments();
+            expect(tileCount).to.be.equal(1);
+        });
+    });
+
+    describe('findAll()', function () {
+        it('should return all tiles in collection', async function () {
+            await insertTestTiles();
+            const tiles = await tileDaoMongo.findAll();
+            expect(tiles.length).to.be.equal(2);
+            expect(tiles[0]?.filename).to.equal('43F9.png');
+            expect(tiles[1]?.id).to.be.equal(2);
+        });
+    });
+
+    describe('find()', function () {
+        it('should return tiles in collection by id', async function () {
+            await insertTestTiles();
+            const tile = await tileDaoMongo.find('a1-b2-c3-d4z');
+            expect(tile.filename).to.equal('43F9.png');
+            expect(tile.id).to.be.equal(1);
+        });
+    });
 });

@@ -7,6 +7,7 @@ export default http.createServer(async (request: IncomingMessage, response: Serv
     const requestUrl = new URL(request.url ?? '', 'http://localhost:3000');
 
     if (requestUrl.pathname == '/vessels' && request.method === 'GET') {
+        console.log('getting vessels');
         await VesselController.getVessels(request, response, requestUrl);
     } else if (/^\/vessels\/*/.test(requestUrl.pathname) && request.method === 'GET') {
         await VesselController.findVessel(request, response, requestUrl);
@@ -16,11 +17,19 @@ export default http.createServer(async (request: IncomingMessage, response: Serv
         await VesselController.deleteVessel(request, response, requestUrl);
     } else if (requestUrl.pathname == '/vessels' && request.method === 'POST') {
         await VesselController.createVessel(request, response);
-    } else if (/^\/tiles\/*/.test(requestUrl.pathname) && request.method === 'GET') {
-        await TileController.findTilesByCoordinates(request, response, requestUrl);
     } else if (/^\/tile-image\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
         // TODO handle null results for id queries
         await TileController.getTileImage(request, response, requestUrl);
+    } else if (/^\/tiles/.test(requestUrl.pathname) && requestUrl.searchParams.get("longitude") && request.method === 'GET') {
+        await TileController.findTilesByCoordinates(request, response, requestUrl);
+    } else if (/^\/tiles/.test(requestUrl.pathname) && request.method === 'GET') {
+        await TileController.getTiles(request, response, requestUrl);
+    } else if (/^\/tiles\/*/.test(requestUrl.pathname) && request.method === 'PUT') {
+        await TileController.updateTile(request, response, requestUrl);
+    } else if (/^\/tiles\/*/.test(requestUrl.pathname) && request.method === 'DELETE') {
+        await TileController.deleteTile(request, response, requestUrl);
+    }  else if (/^\/tiles/.test(requestUrl.pathname) && request.method === 'POST') {
+        await TileController.createTile(request, response);
     } else if (/^\/tile-data\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
         await TileController.findContainedTiles(request, response, requestUrl);
     } else {

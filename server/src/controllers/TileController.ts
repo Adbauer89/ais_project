@@ -1,20 +1,57 @@
 import {IncomingMessage, ServerResponse} from "http";
 import {URL} from "url";
 import {DatabaseConfig} from "../config/DatabaseConfig";
-import TileDaoFactory from "../daos/factory/TileDaoFactory";
 import {Readable} from "stream";
-import TileQueryBuilder from "../queryBuilder/TileQueryBuilder";
+import TileDaoFactory from "../daos/factory/TileDaoFactory";
+import Tile from "../models/Tile";
 
 export default class TileController {
 
-    static getTiles = async (_request: IncomingMessage, response: ServerResponse, _requestUrl: URL) => {
-        const tileQueryBuilder = new TileQueryBuilder(_requestUrl);
+    static createTile = (request: IncomingMessage, response: ServerResponse) => {
+        let body = '';
+
+        request.on('data', (chunk: any) => {
+            body += chunk;
+        });
+
+        request.on('end', async () => {
+            const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
+            const tile = await tileDao.insert(Tile.fromJson(body));
+            response.statusCode = 201;
+            response.setHeader('Content-Type', 'application/json');
+            response.end(JSON.stringify(tile))
+        })
+    }
+
+    static updateTile = async (request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
+        let body = '';
+
+        request.on('data', (chunk: any) => {
+            body += chunk;
+        });
+
+        request.on('end', async () => {
+            const id = requestUrl.pathname.split('/')[2] ?? ''
+            const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
+            const tile = await tileDao.update(id, Tile.fromJson(body));
+            response.statusCode = 200;
+            response.setHeader('Content-Type', 'application/json');
+            response.end(JSON.stringify(tile))
+        })
+    }
+
+    static deleteTile = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
+        const id = requestUrl.pathname.split('/')[2] ?? '';
         const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
-        // db.tiles.find( { west: { $lte: 7.36990595 }, east: { $gte: 7.36990595}, north: {$gte: 57.2868339}, south: {$lte: 57.2868339}, scale: 3}, { image_file: 0})
+        await tileDao.delete(id);
+        response.statusCode = 204;
+        response.setHeader('Content-Type', 'application/json');
+        response.end();
+    }
 
-        console.log(tileQueryBuilder.buildFilterModel());
-
-        const tiles = await tileDao.findAll(tileQueryBuilder.buildFilterModel());
+    static getTiles = async (_request: IncomingMessage, response: ServerResponse, _requestUrl: URL) => {
+        const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
+        const tiles = await tileDao.findAll();
 
         response.statusCode = 200;
         response.setHeader('Content-Type', 'application/json');
@@ -55,7 +92,7 @@ export default class TileController {
     }
 
     static findTilesByCoordinates = async (_request: IncomingMessage, response: ServerResponse, _requestUrl: URL) => {
-        const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
+const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
         const longitude = parseFloat(<string>_requestUrl.searchParams.get("longitude"));
         const latitude = parseFloat(<string>_requestUrl.searchParams.get("latitude"));
 
@@ -65,8 +102,6 @@ export default class TileController {
             north: {$gt: latitude},
             south: {$lte: latitude},
             scale: scale }
-
-
 
         const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
         const tiles = await tileDao.findTilesByCoordinates(queryObject);
