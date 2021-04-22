@@ -2,7 +2,7 @@ import {Model} from './Model';
 
 export default class Tile implements Model {
     id: number = 0;
-    ices_name: string | null = null;
+    ICESName: string | null = null;
     west: number | null = null;
     south: number | null = null;
     east: number | null = null;
@@ -17,7 +17,6 @@ export default class Tile implements Model {
     image_south: number | null = null;
     contained_by: number | null = null;
     image_file: string | null = null;
-    longitude: number | null = null;
 
     private constructor() {}
 
@@ -41,7 +40,6 @@ export default class Tile implements Model {
             .setImageSouth(json["image_south"] ?? null)
             .setContainedBy(json["contained_by"] ?? null)
             .setImageFile(json["image_file"] ?? null)
-            .setLongitude(json["longitude"] ?? null)
             .build();
     }
 
@@ -59,7 +57,7 @@ export default class Tile implements Model {
         }
 
         setIcesName(ices_name: string) {
-            this.tile.ices_name = ices_name;
+            this.tile.ICESName = ices_name;
             return this;
         }
 
@@ -130,11 +128,6 @@ export default class Tile implements Model {
 
         setImageFile(image_file: string) {
             this.tile.image_file = image_file;
-            return this;
-        }
-
-        setLongitude(longitude: number) {
-            this.tile.longitude = longitude;
             return this;
         }
 

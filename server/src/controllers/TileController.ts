@@ -53,4 +53,27 @@ export default class TileController {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.end(JSON.stringify(tiles));
     }
+
+    static findTilesByCoordinates = async (_request: IncomingMessage, response: ServerResponse, _requestUrl: URL) => {
+        const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
+        const longitude = parseFloat(<string>_requestUrl.searchParams.get("longitude"));
+        const latitude = parseFloat(<string>_requestUrl.searchParams.get("latitude"));
+
+        const queryObject = {
+            west: {$lte: longitude},
+            east: {$gt: longitude},
+            north: {$gt: latitude},
+            south: {$lte: latitude},
+            scale: scale }
+
+
+
+        const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
+        const tiles = await tileDao.findTilesByCoordinates(queryObject);
+
+        response.statusCode = 200;
+        response.setHeader('Content-Type', 'application/json');
+        response.setHeader('Access-Control-Allow-Origin', '*');
+        response.end(JSON.stringify(tiles));
+    }
 }

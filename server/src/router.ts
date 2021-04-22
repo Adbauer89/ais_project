@@ -17,9 +17,8 @@ export default http.createServer(async (request: IncomingMessage, response: Serv
     } else if (requestUrl.pathname == '/vessels' && request.method === 'POST') {
         await VesselController.createVessel(request, response);
     } else if (/^\/tiles\/*/.test(requestUrl.pathname) && request.method === 'GET') {
-        await TileController.getTiles(request, response, requestUrl);
+        await TileController.findTilesByCoordinates(request, response, requestUrl);
     } else if (/^\/tile-image\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
-        // TODO Write tests
         // TODO handle null results for id queries
         await TileController.getTileImage(request, response, requestUrl);
     } else if (/^\/tile-data\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
