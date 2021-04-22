@@ -6,12 +6,14 @@ import {URL} from "url";
 export default http.createServer(async (request: IncomingMessage, response: ServerResponse) => {
     const requestUrl = new URL(request.url ?? '', 'http://localhost:3000');
 
-    if (requestUrl.pathname == '/tiles' && request.method === 'GET') {
-        // TODO Create separate routing logic
+    if (/^\/tiles\/*/.test(requestUrl.pathname) && request.method === 'GET') {
+        await TileController.getTiles(request, response, requestUrl);
+    } else if (/^\/tile-image\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
         // TODO Write tests
         // TODO handle null results for id queries
         await TileController.getTileImage(request, response, requestUrl);
-        // tileController.findContainedTiles(request, response, requestUrl);
+    } else if (/^\/tile-data\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
+        await TileController.findContainedTiles(request, response, requestUrl);
     } else {
         invalidUrl(request, response);
     }

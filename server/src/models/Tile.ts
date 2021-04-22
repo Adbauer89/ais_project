@@ -17,6 +17,7 @@ export default class Tile implements Model {
     image_south: number | null = null;
     contained_by: number | null = null;
     image_file: string | null = null;
+    longitude: number | null = null;
 
     private constructor() {}
 
@@ -40,6 +41,7 @@ export default class Tile implements Model {
             .setImageSouth(json["image_south"] ?? null)
             .setContainedBy(json["contained_by"] ?? null)
             .setImageFile(json["image_file"] ?? null)
+            .setLongitude(json["longitude"] ?? null)
             .build();
     }
 
@@ -128,6 +130,11 @@ export default class Tile implements Model {
 
         setImageFile(image_file: string) {
             this.tile.image_file = image_file;
+            return this;
+        }
+
+        setLongitude(longitude: number) {
+            this.tile.longitude = longitude;
             return this;
         }
 
