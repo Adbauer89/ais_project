@@ -1,6 +1,6 @@
 import React, {useState, Fragment} from 'react';
 
-const SearchMenu = () => {
+const SearchMenu = ({ zoomMode, setZoomMode }: {zoomMode: string, setZoomMode: any}) => {
     const [menuState, setMenuState] = useState('closed');
 
     const toggleMenu = () => {
@@ -15,16 +15,35 @@ const SearchMenu = () => {
         setMenuState(newState);
     }
 
-    // TODO Add exit button
+    const handleZoomInClick = (e: { preventDefault: () => void;}) => {
+        if (zoomMode === '') {
+            setZoomMode('in');
+        } else if ( zoomMode === 'in') {
+            setZoomMode('');
+        } else if ( zoomMode === 'out')  {
+            setZoomMode('in');
+        }
+    }
+
+    const handleZoomOutClick = (e: { preventDefault: () => void;}) => {
+        if (zoomMode === '') {
+            setZoomMode('out');
+        } else if ( zoomMode === 'out') {
+            setZoomMode('');
+        } else if ( zoomMode === 'in')  {
+            setZoomMode('out');
+        }
+    }
+
     return (
         <Fragment>
             <section className={`search-menu-container`}>
                 <section className={`search-menu ${menuState}`}>
                     <section className={`search-menu-buttons-container`}>
                         <section className={`search-menu-buttons`}>
-                        <button className={`zoom-button`} onClick={toggleMenu}>0</button>
-                        <button className={`zoom-button`} onClick={toggleMenu}>+</button>
-                        <button className={`zoom-button`} onClick={toggleMenu}>-</button>
+                        <button className={`menu-button`} onClick={toggleMenu}>0</button>
+                        <button className={`zoom-button zoom-in ${zoomMode}`} onClick={handleZoomInClick}>+</button>
+                        <button className={`zoom-button zoom-out ${zoomMode}`} onClick={handleZoomOutClick}>-</button>
                         </section>
                     </section>
                     <section className={`vessel-search`}>
