@@ -78,7 +78,7 @@ body {
 }
 
 .background-dark {
-  background: darken($light-color, 50%);
+  background: darken($light-color, 10%);
 }
 
 .text-center {
@@ -105,18 +105,18 @@ body {
   text-transform: uppercase;
 }
 
-.menu-button, .zoom-button {
-  display: inline-block;
+.zoom-button {
+  display: block;
   font-weight: bold;
   border: none;
   height: 2rem;
   width: 2rem;
-  border-radius: 50%;
-  border: 2px solid white;
+  border-radius: .25rem;
+  border: 1px solid darken($light-color, 20%);
   margin: .25rem;
   text-decoration: none;
-  background: $water-color;
-  color: white;
+  background: $light-color;
+  color: darken($light-color, 60%);
   font-family: sans-serif;
   font-size: 1rem;
   cursor: pointer;
@@ -127,23 +127,14 @@ body {
   -moz-appearance: none;
 }
 
-.menu-button {
-  padding: 10px 30px;
-  margin: .25rem;
-  width: auto;
-  height: auto;
-  border-radius: 100px 100px 100px 100px;
-}
-
 .zoom-button:hover,
-.zoom-button:focus,
-.menu-button:hover,
-.menu-button:focus {
-  background: #0053ba;
+.zoom-button:focus {
+  background: darken($light-color, 60%);
+  color: $light-color;
   transform: scale(1.10);
 }
 
-.menu-button:focus, .zoom-button:focus {
+.zoom-button:focus {
   outline: none;
   outline-offset: -4px;
 }
@@ -172,12 +163,29 @@ input[type="text"] {
   margin-top: 1.5rem;
   border: none;
   padding: 1rem;
-  width: 50vw;
+}
+
+.panel-container {
+  display: inline-block;
+  width: 50%;
+}
+
+.panel-inner {
 }
 
 @media only screen and (max-width: 768px) {
-  input[type="text"] {
-    width: 90vw;
+
+  .panel-container {
+    width: 100%;
+  }
+
+  .map-image, .map-image-container {
+    background: green;
+    width: auto;
+    height: 100vh;
   }
 }
 
+.p-2 {
+  padding: 2rem;
+}
