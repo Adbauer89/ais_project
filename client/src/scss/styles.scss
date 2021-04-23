@@ -149,6 +149,11 @@ body {
   outline-offset: -4px;
 }
 
+.ghost-button, .ghost-button:hover, .ghost-button:active, .ghost-button:focus {
+  background: none;
+  border: none;
+}
+
 .text-panel {
   font-weight: bold;
   font-size: 5rem;

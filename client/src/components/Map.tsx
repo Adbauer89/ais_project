@@ -1,7 +1,10 @@
 import React, {Fragment} from 'react';
 import Vessel from "./Vessel";
+import Port from "./Port";
+import MapObject from "../interfaces/MapObject";
+import VesselMapObject from "../interfaces/VesselMapObject";
 
-const Map = ({ currentImageId, vessels, handleClick }: {currentImageId: number, vessels: any[], handleClick: any}) => {
+const Map = ({ currentImageId, vessels, ports, handleClick }: {currentImageId: number, vessels: VesselMapObject[], ports: MapObject[], handleClick: any}) => {
 
     return (
         <Fragment>
@@ -10,8 +13,8 @@ const Map = ({ currentImageId, vessels, handleClick }: {currentImageId: number, 
                      className="map-image"
                      style={{backgroundImage: `url("http://localhost:3001/tile-image/${currentImageId}")`,
                          backgroundSize: `cover`}}>
-                    { vessels && vessels.map( vessel => {return <Vessel xPosition={vessel.xPosition} yPosition={vessel.yPosition}/>;}) }
-
+                    { vessels && vessels.map( (vessel) => {return <Vessel key={vessel.imo} xPosition={vessel.xPosition ? vessel.xPosition : 0} yPosition={vessel.yPosition}/>;}) }
+                    { ports && ports.map( (port, index) => {return <Port key={index} xPosition={port.xPosition ? port.xPosition : 0} yPosition={port.yPosition}/>;}) }
                 </svg>
             </div>
         </Fragment>

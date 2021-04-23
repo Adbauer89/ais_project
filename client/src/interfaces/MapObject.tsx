@@ -1,8 +1,8 @@
-interface Vessel {
+interface MapObject {
     longitude: number,
     latitude: number,
     xPosition?: number
     yPosition?: number
 }
 
-export default Vessel;
+export default MapObject;
