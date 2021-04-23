@@ -40,7 +40,7 @@ describe('TileIntegration', function () {
                 '_id': new ObjectId('a1-b2-c3-d4z'),
                 'id': 1,
                 'ICESName': '43F9',
-                'filename': '43F9.png',
+                'filename': '43F9.png'
             },
             {
                 '_id': new ObjectId('b2-c3-d4-e5z'),
@@ -51,16 +51,6 @@ describe('TileIntegration', function () {
             }
         ])
     }
-
-    // const insertTileImages = async () => {
-    //     let tileImageDirectory = './tests/images/'
-    //     let tileImages = fs.readdirSync(tileImageDirectory);
-    //
-    //     await tileImages.forEach( tileImage => {
-    //         let binaryImage = fs.readFileSync(tileImageDirectory+tileImage).toString('binary');
-    //         database.collection('tiles').updateOne({filename: tileImage},{$set: {image_file: binaryImage}});
-    //     });
-    // }
 
     describe('getTiles', function () {
         it('should get empty array when there are no tiles', async function () {
@@ -126,26 +116,19 @@ describe('TileIntegration', function () {
         });
     });
 
-    // describe('getTileImage', function () {
-    //     it('should get tile image file from binary', async function () {
-    //         await insertTestTiles();
-    //         await insertTileImages();
-    //         const response = await chai.request(app).get('/tile-image/1');
-    //
-    //         console.log(response.body);
-    //     });
-    // });
+    describe('findTile', function () {
+        it('should get inserted tile from database', async function () {
+            await insertTestTiles();
+            const response = await chai.request(app).get('/tiles/' + new ObjectId('a1-b2-c3-d4z').toHexString());
 
-    // describe('findTile', function () {
-    //     it('should get inserted tile from database', async function () {
-    //         await insertTestTiles();
-    //         const response = await chai.request(app).get('/tiles/' + new ObjectId('a1-b2-c3-d4z').toHexString());
-    //         expect(response.body.imo).to.be.equal(1);
-    //         expect(response.body.name).to.be.equal('One');
-    //         expect(response.body.id).to.not.be.null;
-    //         expect(response.status).to.be.equal(200);
-    //     });
-    // });
+            console.log(response.body);
+
+            expect(response.body.ICESName).to.be.equal('43F9');
+            expect(response.body.filename).to.be.equal('43F9.png');
+            expect(response.body.id).to.not.be.null;
+            expect(response.status).to.be.equal(200);
+        });
+    });
 
     describe('updateTile', function () {
         it('should update tile in the database', async function () {
@@ -181,19 +164,19 @@ describe('TileIntegration', function () {
 
             await chai.request(app).put('/tiles/' + new ObjectId('a1-b2-c3-d4z').toHexString())
                 .send(JSON.stringify({
-                    east: 10.0,
-                    west: 9.0,
-                    north: 57.5,
-                    south: 57,
+                    image_east: 10.0,
+                    image_west: 9.0,
+                    image_north: 57.5,
+                    image_south: 57,
                     scale: 3
                 }));
 
             await chai.request(app).put('/tiles/' + new ObjectId('b2-c3-d4-e5z').toHexString())
                 .send(JSON.stringify({
-                    east: 11.0,
-                    west: 10.0,
-                    north: 58.5,
-                    south: 58,
+                    image_east: 10.0,
+                    image_west: 9.0,
+                    image_north: 57.5,
+                    image_south: 57,
                     scale: 2
                 }));
 
@@ -203,7 +186,40 @@ describe('TileIntegration', function () {
                 {
                     id: 1,
                     ICESName: '43F9',
-                    west: 9,
+                    image_east: 10.0,
+                    image_west: 9.0,
+                    image_north: 57.5,
+                    image_south: 57,
+                    image_width: null,
+                    image_height: null,
+                    north: null,
+                    scale: 3,
+                    south: null,
+                    west: null,
+                    east: null,
+                    contained_by: null,
+                    filename: '43F9.png',
+                    image_file: null
+
+                }
+            ]);
+            expect(response.status).to.be.equal(200);
+        });
+    })
+
+
+    describe('findContainedTiles', function () {
+        it('should get array of tiles contained in given tile id', async function () {
+            await insertTestTiles();
+
+            const response = await chai.request(app).get('/tile-data/1');
+
+            expect(response.body).to.deep.equal([
+                {
+                    id: 2,
+                    ICESName: '43F91',
+                    filename: '43F91.png',
+                    contained_by: 1,
                     image_east: null,
                     image_file: null,
                     image_height: null,
@@ -211,13 +227,11 @@ describe('TileIntegration', function () {
                     image_south: null,
                     image_west: null,
                     image_width: null,
-                    north: 57.5,
-                    scale: 3,
-                    south: 57,
-                    contained_by: null,
-                    east: 10,
-                    filename: '43F9.png'
-
+                    north: null,
+                    east: null,
+                    scale: null,
+                    south: null,
+                    west: null,
                 }
             ]);
             expect(response.status).to.be.equal(200);

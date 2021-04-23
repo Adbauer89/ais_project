@@ -79,7 +79,6 @@ export default class TileDaoMongo extends DaoMongoCrud<Tile> implements CrudDao<
         });
     }
 
-
     async getTileImage(tileId: number) : Promise<Tile>
     {
         const image = await this.database.collection(this.collectionName).findOne({ id: tileId });

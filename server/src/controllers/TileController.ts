@@ -111,4 +111,13 @@ const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.end(JSON.stringify(tiles));
     }
+
+    static findTile = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
+        const id = requestUrl.pathname.split('/')[2] ?? '';
+        const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);
+        const tile = await tileDao.find(id);
+        response.statusCode = 200;
+        response.setHeader('Content-Type', 'application/json');
+        response.end(JSON.stringify(tile));
+    }
 }
