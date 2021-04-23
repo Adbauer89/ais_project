@@ -97,10 +97,10 @@ const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
         const latitude = parseFloat(<string>_requestUrl.searchParams.get("latitude"));
 
         const queryObject = {
-            west: {$lte: longitude},
-            east: {$gt: longitude},
-            north: {$gt: latitude},
-            south: {$lte: latitude},
+            image_west: {$lte: longitude},
+            image_east: {$gt: longitude},
+            image_north: {$gt: latitude},
+            image_south: {$lte: latitude},
             scale: scale }
 
         const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Mongo);

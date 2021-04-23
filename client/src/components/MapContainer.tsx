@@ -1,44 +1,90 @@
 import React, {useState, useEffect} from 'react';
-
 import Map from './Map';
 import SearchMenu from './SearchMenu';
+import ImageData from "../interfaces/ImageData";
+import Vessel from "../interfaces/Vessel";
+import CurrentFocusCoordinates from "../interfaces/CurrentFocusCoordinates";
 
 const MapContainer = () => {
-    const [currentZoom, setCurrentZoom] = useState(1);
-    const [currentImageId, setCurrentImageId] = useState(1);
-    const [currentImageData, setCurrentImageData] = useState(
-        {   "id": 1, "ICESName": "-1", "west": 7.0, "south": 54.5, "east": 13.0, "north": 57.5,
+    const rootImage = {"id": 1, "ICESName": "-1", "west": 7.0, "south": 54.5, "east": 13.0, "north": 57.5,
         "scale": 1, "filename": "ROOT.png", "image_width": 2000, "image_height": 2000, "image_west": 7.0,
-        "image_south": 54.31614, "image_east": 13.0, "image_north": 57.669343, "contained_by": -1});
-    const [zoomMode, setZoomMode] = useState('');
-    const [currentFocus, setCurrentFocus] = useState({ longitude: 0, latitude: 0 });
+        "image_south": 54.31614, "image_east": 13.0, "image_north": 57.669343, "contained_by": -1}
+
+    const [currentZoom, setCurrentZoom] = useState<number>(1);
+    const [currentImageId, setCurrentImageId] = useState<number>(1);
+    const [zoomMode, setZoomMode] = useState<string>('');
+    const [currentFocus, setCurrentFocus] = useState<CurrentFocusCoordinates>({ longitude: 0, latitude: 0 });
+    const [currentImageData, setCurrentImageData] = useState<ImageData>(rootImage);
+    const [vessels, setVessels] = useState<Vessel[]>([{longitude: 8.204047217537942, latitude: 56.913153456998316}]);
 
     useEffect(() => {
         if (currentFocus["longitude"] !== 0 && currentFocus["latitude"] !== 0) {
             getNewImage();
         }
-    }, [currentFocus])
+    }, [currentZoom]);
 
     useEffect(() => {
         if (currentImageData !== undefined) {
             setCurrentImageId(currentImageData.id);
+            mapVessels();
+        } else {
+            console.log('Target image does not exist');
+
+            // TODO Replace with query image by id
+            setCurrentImageData(rootImage);
         }
-    }, [currentImageData])
+
+    }, [currentImageData]);
+
+    const mapVessels = () => {
+        let newVessels: Vessel[];
+
+        newVessels = [];
+
+        vessels.map( vessel => {
+            newVessels.push(
+                {
+                    longitude: vessel["longitude"],
+                    latitude: vessel["latitude"],
+                    xPosition: calculateVesselXPosition(),
+                    yPosition: calculateVesselYPosition(),
+                }
+            )
+        });
+
+        setVessels(newVessels);
+    }
+
+    const calculateVesselXPosition = () => {
+        return (vessels[0]["longitude"] - currentImageData.image_west) / (currentImageData.image_east - currentImageData.image_west) * 100
+    };
+
+    const calculateVesselYPosition = () => {
+        return (currentImageData.image_north - vessels[0]["latitude"]) / (currentImageData.north - currentImageData.image_south) * 100
+    };
 
     const handleClick = (e: { preventDefault: () => void; pageX: number; pageY: number;}) => {
         e.preventDefault();
-        let newFocus = {
-            longitude: calculateMapX(e),
-            latitude: calculateMapY(e)
+
+        if (currentImageData !== undefined) {
+            let newFocus = {
+                longitude: calculateMapX(e),
+                latitude: calculateMapY(e)
+            }
+
+            setCurrentFocus(newFocus);
+
+            changeZoom();
         }
-        setCurrentFocus(newFocus);
-        changeZoom();
+    }
+
+    const getNewImageById = (imageId: number) => {
+        fetch(`http://localhost:3001/tile-image/${imageId}`)
+            .then(response => response.json())
+            .then(data => setCurrentImageData(data[0]));
     }
 
     const getNewImage = () => {
-        console.log(currentFocus.longitude);
-        console.log(currentFocus.latitude);
-
         fetch(`http://localhost:3001/tiles?longitude=${currentFocus.longitude}&latitude=${currentFocus.latitude}&scale=${currentZoom}`)
             .then(response => response.json())
             .then(data => setCurrentImageData(data[0]));
@@ -51,7 +97,6 @@ const MapContainer = () => {
         divWidth = document.getElementById('map')!.offsetWidth;
 
         return currentImageData.west + (currentImageData.east - currentImageData.west) * ((e.pageX - divLeft) / divWidth);
-
     }
 
     const calculateMapY = (e: any): number => {
@@ -61,14 +106,16 @@ const MapContainer = () => {
         divHeight = document.getElementById('map')!.offsetHeight;
 
         return currentImageData.south + (currentImageData.north - currentImageData.south) * (1 - ((e.pageY - divTop) / divHeight));
-
     }
 
     const changeZoom = () => {
-        if (zoomMode === 'in') {
-            zoomIn();
-        } else if (zoomMode === 'out') {
-            zoomOut();
+        switch (zoomMode) {
+            case 'in':
+                zoomIn();
+                break;
+            case 'out':
+                zoomOut();
+                break;
         }
     }
 
@@ -78,8 +125,6 @@ const MapContainer = () => {
                 setCurrentZoom(2);
                 break;
             case 2:
-                setCurrentZoom(3);
-                break;
             case 3:
                 setCurrentZoom(3);
                 break;
@@ -89,8 +134,6 @@ const MapContainer = () => {
     const zoomOut = () => {
         switch (currentZoom) {
             case 1:
-                setCurrentZoom(1);
-                break;
             case 2:
                 setCurrentZoom(1);
                 break;
@@ -103,7 +146,7 @@ const MapContainer = () => {
     return (
         <section className={`map-container ${zoomMode}`}>
             <SearchMenu zoomMode={zoomMode} setZoomMode={setZoomMode}/>
-            {currentImageId && <Map currentImageId={currentImageId} handleClick={handleClick}/> }
+            {currentImageId && <Map currentImageId={currentImageId} vessels={vessels} handleClick={handleClick}/> }
         </section>
     )
 }

@@ -7,7 +7,6 @@ export default http.createServer(async (request: IncomingMessage, response: Serv
     const requestUrl = new URL(request.url ?? '', 'http://localhost:3000');
 
     if (requestUrl.pathname == '/vessels' && request.method === 'GET') {
-        console.log('getting vessels');
         await VesselController.getVessels(request, response, requestUrl);
     } else if (/^\/vessels\/*/.test(requestUrl.pathname) && request.method === 'GET') {
         await VesselController.findVessel(request, response, requestUrl);
