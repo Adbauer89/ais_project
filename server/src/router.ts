@@ -2,6 +2,7 @@ import http, {IncomingMessage, ServerResponse} from "http";
 import VesselController from "./controllers/VesselController";
 import TileController from "./controllers/TileController";
 import {URL} from "url";
+import PortController from "./controllers/PortController";
 
 export default http.createServer(async (request: IncomingMessage, response: ServerResponse) => {
     const requestUrl = new URL(request.url ?? '', 'http://localhost:3000');
@@ -32,6 +33,8 @@ export default http.createServer(async (request: IncomingMessage, response: Serv
         await TileController.createTile(request, response);
     } else if (/^\/tile-data\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
         await TileController.findContainedTiles(request, response, requestUrl);
+    } else if (/^\/ports\/*/.test(requestUrl.pathname) && request.method === 'GET') {
+        await PortController.getPorts(request, response, requestUrl);
     } else {
         invalidUrl(request, response);
     }

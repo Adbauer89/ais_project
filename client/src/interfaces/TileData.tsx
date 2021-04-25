@@ -1,4 +1,4 @@
-interface ImageData {
+interface TileData {
     id: number,
     ICESName: string,
     west: number,
@@ -16,4 +16,4 @@ interface ImageData {
     contained_by: number
 }
 
-export default ImageData;
+export default TileData;

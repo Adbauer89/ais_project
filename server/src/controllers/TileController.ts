@@ -55,6 +55,7 @@ export default class TileController {
 
         response.statusCode = 200;
         response.setHeader('Content-Type', 'application/json');
+        response.setHeader('Access-Control-Allow-Origin', '*');
         response.end(JSON.stringify(tiles));
     }
 
@@ -64,7 +65,6 @@ export default class TileController {
         const tile = await tileDao.getTileImage(parseInt(<string>parentTileId, 10));
 
         // @ts-ignore
-        // TODO Fix no overload matches
         const buffer = Buffer.from(tile.image_file, 'binary');
         const readable = new Readable();
         readable._read = () => {}; // _read is required but you can noop it
