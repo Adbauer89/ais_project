@@ -7,11 +7,11 @@ import TileDao from "../interface/TileDao";
 export default class TileDaoFactory {
     static async getTileDao(databaseConfig: DatabaseConfig): Promise<TileDao>
     {
-        switch (databaseConfig.type) {
+        switch (databaseConfig.getType()) {
             case 'mongo':
                 return new TileDaoMongo(await Mongo.getDatabase(databaseConfig));
             default:
-                throw new InvalidDatabaseConfigException(`${databaseConfig.type} is not a valid database type.`);
+                throw new InvalidDatabaseConfigException(`${databaseConfig.getType()} is not a valid database type.`);
         }
 
     }
