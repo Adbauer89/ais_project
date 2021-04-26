@@ -28,7 +28,7 @@ const MapContainer = () => {
 
     const getPorts = async () => {
         const ports: PortMapObject[] = await Requests.getPorts();
-        setPorts(ports);
+        setPorts(mapPorts(ports));
     }
 
     const updateVesselPositions = ()  => {
@@ -150,7 +150,7 @@ const MapContainer = () => {
         setTile(imageData);
     }
 
-    const mapPorts = (portArray: []) => {
+    const mapPorts = (portArray: PortMapObject[]) => {
         let newPorts: PortMapObject[];
 
         newPorts = portArray.map( port => {
