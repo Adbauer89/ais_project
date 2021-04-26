@@ -33,9 +33,17 @@ export default http.createServer(async (request: IncomingMessage, response: Serv
         await TileController.createTile(request, response);
     } else if (/^\/tile-data\/[\-0-9]+/.test(requestUrl.pathname) && request.method === 'GET') {
         await TileController.findContainedTiles(request, response, requestUrl);
-    } else if (/^\/ports\/*/.test(requestUrl.pathname) && request.method === 'GET') {
+    } else if (requestUrl.pathname == '/ports' && request.method === 'GET') {
         await PortController.getPorts(request, response, requestUrl);
-    } else {
+    }  else if (/^\/ports\/*/.test(requestUrl.pathname) && request.method === 'GET') {
+        await PortController.findPort(request, response, requestUrl);
+    } else if (/^\/ports\/*/.test(requestUrl.pathname) && request.method === 'PUT') {
+        await PortController.updatePort(request, response, requestUrl);
+    } else if (/^\/ports\/*/.test(requestUrl.pathname) && request.method === 'DELETE') {
+        await PortController.deletePort(request, response, requestUrl);
+    } else if (requestUrl.pathname == '/ports' && request.method === 'POST') {
+        await PortController.createPort(request, response);
+    }  else {
         invalidUrl(request, response);
     }
 });

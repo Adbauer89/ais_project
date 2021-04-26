@@ -121,8 +121,6 @@ describe('TileIntegration', function () {
             await insertTestTiles();
             const response = await chai.request(app).get('/tiles/' + new ObjectId('a1-b2-c3-d4z').toHexString());
 
-            console.log(response.body);
-
             expect(response.body.ICESName).to.be.equal('43F9');
             expect(response.body.filename).to.be.equal('43F9.png');
             expect(response.body.id).to.not.be.null;
@@ -150,6 +148,18 @@ describe('TileIntegration', function () {
             expect(tilesInDatabase).to.be.equal(1);
         });
     });
+
+    // describe('getTileImage', function () {
+    //         it('should return the tile image', async function () {
+    //             let binaryImage = fs.readFileSync('./tests/images/3_3.png').toString('binary')
+    //             await chai.request(app).put('/tiles/' + new ObjectId('b2-c3-d4-e5z').toHexString())
+    //                 .send(JSON.stringify({image_file: binaryImage}));
+    //
+    //             const response = await chai.request(app).get('/tile-image/2');
+    //             expect(response.status).to.be.equal(200);
+    //             expect(response.header.contentType).to.be.equal('image/png');
+    //         });
+    // })
 
     describe('notFound', function () {
         it('should return not found', async function () {
