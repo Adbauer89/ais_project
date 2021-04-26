@@ -3,8 +3,6 @@ import PortMapObject from "../interfaces/PortMapObject";
 
 const Port = ({ port, currentZoom }: {port: PortMapObject, currentZoom: number}) => {
     const color = '#ffa200CC';
-
-    console.log(port);
     // @ts-ignore
     return (
         <Fragment>
