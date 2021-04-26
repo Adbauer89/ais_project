@@ -160,6 +160,7 @@ const MapContainer = () => {
 
         newPorts = portArray.map( port => {
             // @ts-ignore
+            // spread operator can only be used on object types
             return { ...port, xPosition: calculateObjectXPosition(port), yPosition: calculateObjectYPosition(port) }});
 
         return newPorts;
