@@ -68,6 +68,19 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>PortController</code> controls <code>Port</code> requests and responses for basic CRUD methods.</p>
+						<a href="#covers-project-queries" id="covers-project-queries" style="color: inherit; text-decoration: none;">
+							<h2>Covers Project Queries</h2>
+						</a>
+						<ul>
+							<li><a href="controllers_portcontroller.default.html#getports">getPorts</a> - <em>Read all ports matching the given name and (optional) country</em></li>
+						</ul>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -128,7 +141,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/PortController.ts#L29">src/controllers/PortController.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/PortController.ts#L45">src/controllers/PortController.ts:45</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -154,7 +167,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/PortController.ts#L62">src/controllers/PortController.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/PortController.ts#L78">src/controllers/PortController.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -183,7 +196,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/PortController.ts#L20">src/controllers/PortController.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/PortController.ts#L36">src/controllers/PortController.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -212,9 +225,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/PortController.ts#L9">src/controllers/PortController.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/PortController.ts#L25">src/controllers/PortController.ts:25</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+										<h3>Description</h3>
+									</a>
+									<p>Gets ports from database that match the search parameters passed through the <code>requestUrl</code>. Accepted search
+									parameters include the port name(location), country, mapview_1, mapview_2, and mapview_3.</p>
+								</div>
+								<ul>
+									<li>Request Type: GET</li>
+									<li>Example Request Endpoint: <code>ports?name=Ebeltoft&amp;country=Denmark</code></li>
+								</ul>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -225,6 +251,8 @@
 								</li>
 								<li>
 									<h5>requestUrl: <span class="tsd-signature-type">URL</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -241,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/PortController.ts#L45">src/controllers/PortController.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/PortController.ts#L61">src/controllers/PortController.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

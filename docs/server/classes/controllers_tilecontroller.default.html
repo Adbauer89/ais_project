@@ -68,6 +68,21 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>TileController</code> controls <code>Tile</code> requests and responses for basic CRUD methods as well as methods to get <code>Tile</code>
+						image files, find tiles contained by other tiles, and find tiles based on coordinates.</p>
+						<a href="#covers-project-queries" id="covers-project-queries" style="color: inherit; text-decoration: none;">
+							<h2>Covers Project Queries</h2>
+						</a>
+						<ul>
+							<li><a href="controllers_tilecontroller.default.html#gettileimage">getTileImage</a> - <em>Given a tile Id, get the actual tile (a PNG file)</em></li>
+							<li><a href="controllers_tilecontroller.default.html#findcontainedtiles">findContainedTiles</a> - <em>Given a background map tile for zoom level 1 (2), find the 4 tiles of zoom level 2 (3) that are contained in it;</em></li>
+						</ul>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -131,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L10">src/controllers/TileController.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L17">src/controllers/TileController.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -157,7 +172,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L43">src/controllers/TileController.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L50">src/controllers/TileController.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -186,9 +201,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L81">src/controllers/TileController.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L110">src/controllers/TileController.ts:110</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+										<h3>Description</h3>
+									</a>
+									<p>Gets tiles from database that are <code>contained_in</code> the parent tile <code>id</code> given in the request URL.</p>
+								</div>
+								<ul>
+									<li>Request Type: GET</li>
+									<li>Example Request Endpoint: <code>tile-data/-1</code></li>
+								</ul>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -199,6 +226,8 @@
 								</li>
 								<li>
 									<h5>_requestUrl: <span class="tsd-signature-type">URL</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -215,7 +244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L113">src/controllers/TileController.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L142">src/controllers/TileController.ts:142</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -244,7 +273,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L92">src/controllers/TileController.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L121">src/controllers/TileController.ts:121</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -273,9 +302,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L61">src/controllers/TileController.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L80">src/controllers/TileController.ts:80</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+										<h3>Description</h3>
+									</a>
+									<p>Gets a tile image from the database by the tile <code>id</code> given in the request URL.</p>
+								</div>
+								<ul>
+									<li>Request Type: GET</li>
+									<li>Response Type: image/png</li>
+									<li>Example Request Endpoint: <code>/tile-image/1</code></li>
+								</ul>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -286,6 +328,8 @@
 								</li>
 								<li>
 									<h5>requestUrl: <span class="tsd-signature-type">URL</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -302,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L52">src/controllers/TileController.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L59">src/controllers/TileController.ts:59</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -331,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/0dab2b7/server/src/controllers/TileController.ts#L26">src/controllers/TileController.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/2dc55d3/server/src/controllers/TileController.ts#L33">src/controllers/TileController.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
