@@ -8,7 +8,7 @@ import Port from "../models/Port";
 export default class PortController {
     static getPorts = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         const portQueryBuilder = new PortQueryBuilder(requestUrl);
-        const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Mongo);
+        const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
         const ports = await portDao.findAll(portQueryBuilder.buildFilterModel());
 
         response.statusCode = 200;
@@ -19,7 +19,7 @@ export default class PortController {
 
     static findPort = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         const id = requestUrl.pathname.split('/')[2] ?? '';
-        const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Mongo);
+        const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
         const port = await portDao.find(id);
         response.statusCode = 200;
         response.setHeader('Content-Type', 'application/json');
@@ -34,7 +34,7 @@ export default class PortController {
         });
 
         request.on('end', async () => {
-            const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Mongo);
+            const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
             const port = await portDao.insert(Port.fromJson(body));
             response.statusCode = 201;
             response.setHeader('Content-Type', 'application/json');
@@ -51,7 +51,7 @@ export default class PortController {
 
         request.on('end', async () => {
             const id = requestUrl.pathname.split('/')[2] ?? ''
-            const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Mongo);
+            const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
             const port = await portDao.update(id, Port.fromJson(body));
             response.statusCode = 200;
             response.setHeader('Content-Type', 'application/json');
@@ -61,7 +61,7 @@ export default class PortController {
 
     static deletePort = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         const id = requestUrl.pathname.split('/')[2] ?? '';
-        const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Mongo);
+        const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
         await portDao.delete(id);
         response.statusCode = 204;
         response.setHeader('Content-Type', 'application/json');

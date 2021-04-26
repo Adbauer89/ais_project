@@ -3,7 +3,9 @@ import {expect} from "chai";
 
 describe('PortDaoFactory', function () {
     const databaseConfig = {
-        type: 'undefined',
+        getType() {
+            return 'undefined';
+        },
         getUrl() {
             return ''
         },

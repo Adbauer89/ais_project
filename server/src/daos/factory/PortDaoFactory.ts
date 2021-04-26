@@ -7,11 +7,11 @@ import PortDao from "../interface/PortDao";
 export default class PortDaoFactory {
     static async getPortDao(databaseConfig: DatabaseConfig): Promise<PortDao>
     {
-        switch (databaseConfig.type) {
+        switch (databaseConfig.getType()) {
             case 'mongo':
                 return new PortDaoMongo(await Mongo.getDatabase(databaseConfig));
             default:
-                throw new InvalidDatabaseConfigException(`${databaseConfig.type} is not a valid database type.`);
+                throw new InvalidDatabaseConfigException(`${databaseConfig.getType()} is not a valid database type.`);
         }
 
     }
