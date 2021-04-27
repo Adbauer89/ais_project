@@ -11,6 +11,8 @@
 This repository includes TypeDoc generated documentation for the traffic monitoring backend, REST layer, 
 and Browser-displayed map. The repository also includes code level documentation for critical methods and components
 for each of the previously mentioned layers.
+
+The following documentation is best view in a web browser:
 - `docs/client/index.html`
 - `docs/server/index.html`
 
