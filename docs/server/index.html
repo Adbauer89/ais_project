@@ -68,18 +68,39 @@
 					<li>Drew Thomas</li>
 					<li>Alan Bauer</li>
 				</ul>
+				<a href="#set-up-amp-installation" id="set-up-amp-installation" style="color: inherit; text-decoration: none;">
+					<h2>Set Up &amp; Installation</h2>
+				</a>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h2>Documentation</h2>
 				</a>
+				<p>This repository includes TypeDoc generated documentation for the traffic monitoring backend, REST layer,
+					and Browser-displayed map. The repository also includes code level documentation for critical methods and components
+				for each of the previously mentioned layers.</p>
 				<ul>
 					<li><code>docs/client/index.html</code></li>
 					<li><code>docs/server/index.html</code></li>
 				</ul>
-				<a href="#summary" id="summary" style="color: inherit; text-decoration: none;">
-					<h2>Summary</h2>
+				<a href="#quick-lookup" id="quick-lookup" style="color: inherit; text-decoration: none;">
+					<h3>Quick Lookup</h3>
 				</a>
-				<p>This application follows the criteria for <strong>Option C</strong> outlined in the <em>project_tasks.html</em> document provided for the
-				project.</p>
+				<p>The following links have been provided as a way to quickly find documentation that corresponds to project requirements.</p>
+				<a href="#project-queries" id="project-queries" style="color: inherit; text-decoration: none;">
+					<h3>Project Queries</h3>
+				</a>
+				<ul>
+					<li><a href="/docs/server/classes/controllers_portcontroller.default.html#getports"><code>PortController.getPorts</code></a> Read all ports
+					matching the given name and (optional) country</li>
+					<li><a href="/docs/server/classes/controllers_tilecontroller.default.html#gettileimage"><code>Tile.getTileImage</code></a> Given a tile Id, get
+					the actual tile (a PNG file)</li>
+					<li><a href="/docs/server/classes/controllers_tilecontroller.default.html#findcontainedtiles"><code>Tile.findContainedTiles</code></a> Given a background
+						map tile for zoom level 1 (2), find the 4 tiles of zoom level 2 (3) that are contained in it;
+						<a href="#summary" id="summary" style="color: inherit; text-decoration: none;">
+							<h2>Summary</h2>
+						</a>
+						This application follows the criteria for <strong>Option C</strong> outlined in the <em>project_tasks.html</em> document provided for the
+					project.</li>
+				</ul>
 				<a href="#traffic-monitoring-backend" id="traffic-monitoring-backend" style="color: inherit; text-decoration: none;">
 					<h2>Traffic Monitoring Backend</h2>
 				</a>
@@ -96,10 +117,12 @@
 					<h4>Display</h4>
 				</a>
 				<ul>
-					<li>Regular interval queries for updating ship positions</li>
+					<li>Regular interval queries for updating vessel positions</li>
 					<li>Dynamic rendering of ports and port names based on background tile</li>
 					<li>Dynamic rendering of last vessel location based on background tile</li>
 					<li>Dynamic rendering of vessels based on search parameters</li>
+					<li>Collapsible search menu</li>
+					<li>Toggle buttons for zooming in/out and opening/closing search menu</li>
 				</ul>
 				<a href="#zoom" id="zoom" style="color: inherit; text-decoration: none;">
 					<h4>Zoom</h4>
