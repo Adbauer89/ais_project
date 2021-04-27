@@ -68,6 +68,14 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Creates Tile DAO for MongoDB. Includes specialized methods beyond basic CRUD to retrieve tile image files, find
+						contained tiles, and find tiles by coordinates.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -136,7 +144,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="daos_mongo_daomongocrud.default.html">default</a>.<a href="daos_mongo_daomongocrud.default.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L7">src/daos/mongo/TileDaoMongo.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L11">src/daos/mongo/TileDaoMongo.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -273,13 +281,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L91">src/daos/mongo/TileDaoMongo.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L103">src/daos/mongo/TileDaoMongo.ts:103</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Finds tiles that are contained in the given tile id. Excludes <code>image_file</code> binary from projection.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>tileId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -296,13 +311,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L101">src/daos/mongo/TileDaoMongo.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L123">src/daos/mongo/TileDaoMongo.ts:123</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Finds tiles using given query object.
+									<code>const queryObject = { image_west: {$lte: longitude}, image_east: {$gt: longitude}, image_north: {$gt: latitude}, image_south: {$lte: latitude}, scale: scale }</code></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>queryObject: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="models_tile.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -319,13 +342,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L82">src/daos/mongo/TileDaoMongo.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L90">src/daos/mongo/TileDaoMongo.ts:90</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Queries database for tile image file by tile id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>tileId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="models_tile.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -367,7 +397,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L72">src/daos/mongo/TileDaoMongo.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L76">src/daos/mongo/TileDaoMongo.ts:76</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -385,7 +415,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="daos_mongo_daomongocrud.default.html">default</a>.<a href="daos_mongo_daomongocrud.default.html#todocument">toDocument</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L15">src/daos/mongo/TileDaoMongo.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/160ac63/server/src/daos/mongo/TileDaoMongo.ts#L19">src/daos/mongo/TileDaoMongo.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

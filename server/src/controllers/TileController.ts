@@ -65,7 +65,6 @@ export default class TileController {
         response.end(JSON.stringify(tiles));
     }
 
-
     /**
      * ### Description
      * Gets a tile image from the database by the tile `id` given in the request URL.
@@ -118,6 +117,12 @@ export default class TileController {
         response.end(JSON.stringify(tiles));
     }
 
+    /**
+     * Finds tiles by creating queryObject based on given longitude and latitude from search parameters.
+     * @param _request
+     * @param response
+     * @param _requestUrl
+     */
     static findTilesByCoordinates = async (_request: IncomingMessage, response: ServerResponse, _requestUrl: URL) => {
 const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
         const longitude = parseFloat(<string>_requestUrl.searchParams.get("longitude"));
@@ -139,6 +144,12 @@ const scale = parseInt(<string>_requestUrl.searchParams.get("scale"), 10);
         response.end(JSON.stringify(tiles));
     }
 
+    /**
+     * Finds a title from the id given in the request URL path name.
+     * @param _request
+     * @param response
+     * @param requestUrl
+     */
     static findTile = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         const id = requestUrl.pathname.split('/')[2] ?? '';
         const tileDao = await TileDaoFactory.getTileDao(DatabaseConfig.Config);

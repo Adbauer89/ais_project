@@ -33,6 +33,12 @@ export default class PortController {
         response.end(JSON.stringify(ports));
     }
 
+    /**
+     * Finds a port from the id given in the request URL path name.
+     * @param _request
+     * @param response
+     * @param requestUrl
+     */
     static findPort = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         const id = requestUrl.pathname.split('/')[2] ?? '';
         const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
@@ -42,6 +48,11 @@ export default class PortController {
         response.end(JSON.stringify(port));
     }
 
+    /**
+     * Creates a port document in the `port` collection of the database from the request JSOn body.
+     * @param request
+     * @param response
+     */
     static createPort = (request: IncomingMessage, response: ServerResponse) => {
         let body = '';
 
@@ -58,6 +69,12 @@ export default class PortController {
         })
     }
 
+    /**
+     * Updates a port document that matches the given id in the request URL pathname with the request JSON body.
+     * @param request
+     * @param response
+     * @param requestUrl
+     */
     static updatePort = async (request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         let body = '';
 
@@ -75,6 +92,12 @@ export default class PortController {
         })
     }
 
+    /**
+     * Deletes the port document that matches the id given in the request URL path name.
+     * @param _request
+     * @param response
+     * @param requestUrl
+     */
     static deletePort = async (_request: IncomingMessage, response: ServerResponse, requestUrl: URL) => {
         const id = requestUrl.pathname.split('/')[2] ?? '';
         const portDao = await PortDaoFactory.getPortDao(DatabaseConfig.Config);
