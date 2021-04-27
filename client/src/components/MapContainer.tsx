@@ -6,7 +6,6 @@ import MapObject from "../interfaces/MapObject";
 import CurrentFocusCoordinates from "../interfaces/CurrentFocusCoordinates";
 import VesselMapObject from "../interfaces/VesselMapObject";
 import PortMapObject from "../interfaces/PortMapObject";
-import ImageData from "../interfaces/ImageData";
 import Requests from "../Requests";
 
 /**
@@ -225,7 +224,7 @@ const MapContainer = () => {
      * This function gets a background tile based on the application's current focus and zoom
      */
     const getTile = async () => {
-        const imageData: ImageData = await Requests.getImageData(currentFocus, currentZoom);
+        const imageData: TileData = await Requests.getTileData(currentFocus, currentZoom);
         setTile(imageData);
     }
 
