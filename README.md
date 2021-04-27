@@ -14,18 +14,6 @@ for each of the previously mentioned layers.
 - `docs/client/index.html`
 - `docs/server/index.html`
 
-### Quick Lookup
-
-The following links have been provided as a way to quickly find documentation that corresponds to project requirements.
-
-### Project Queries
-
-- [`PortController.getPorts`](/classes/controllers_portcontroller.default.html#getports) Read all ports 
-  matching the given name and (optional) country
-- [`Tile.getTileImage`](/classes/controllers_tilecontroller.default.html#gettileimage) Given a tile Id, get 
-  the actual tile (a PNG file)
-- [`Tile.findContainedTiles`](/classes/controllers_tilecontroller.default.html#findcontainedtiles) Given a background 
-  map tile for zoom level 1 (2), find the 4 tiles of zoom level 2 (3) that are contained in it;
 ## Summary
 This application follows the criteria for **Option C** outlined in the *project_tasks.html* document provided for the
 project.
