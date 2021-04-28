@@ -18,7 +18,7 @@ import TileData from "../interfaces/TileData";
  */
 const Map = ({ handleClick, currentZoom, tile }: {currentZoom: number, handleClick: any, tile: TileData}) => {
     const [ports, setPorts] = useState<PortMapObject[]>([]);
-    const [vesselsTwo, setVesselsTwo] = useState<VesselMapObject[]>([
+    const [vessels, setVessels] = useState<VesselMapObject[]>([
         {
             "Timestamp": {"$date": {"$numberLong": "1605657600000"}},
             "Class": "Class A", "MMSI": 304858000,
@@ -72,12 +72,12 @@ const Map = ({ handleClick, currentZoom, tile }: {currentZoom: number, handleCli
     const mapVessels = () => {
         let newVessels: VesselMapObject[];
 
-        newVessels = vesselsTwo.map( vessel => {
+        newVessels = vessels.map( vessel => {
             return { ...vessel,
                 xPosition: MapHelpers.getXPosition(vessel.Position.coordinates[1], tile),
                 yPosition: MapHelpers.getYPosition(vessel.Position.coordinates[0], tile) }});
 
-        setVesselsTwo(newVessels);
+        setVessels(newVessels);
     }
 
     /**
@@ -136,7 +136,7 @@ const Map = ({ handleClick, currentZoom, tile }: {currentZoom: number, handleCli
                      className="map-image"
                      style={{backgroundImage: `url("${Requests.getBaseUrl()}tile-image/${tile && tile.id}")`,
                          backgroundSize: `cover`}}>
-                    { vesselsTwo && vesselsTwo.map( (vessel) => {return <Vessel xPosition={vessel.xPosition ? vessel.xPosition : 0} yPosition={vessel.yPosition}/>;}) }
+                    { vessels && vessels.map( (vessel) => {return <Vessel xPosition={vessel.xPosition ? vessel.xPosition : 0} yPosition={vessel.yPosition}/>;}) }
                     { ports && ports.map( (port, index) => {return <Port currentZoom={currentZoom} key={index} port={port}/>;}) }
                 </svg>
             </section>
