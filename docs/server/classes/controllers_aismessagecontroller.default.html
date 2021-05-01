@@ -89,7 +89,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="controllers_aismessagecontroller.default.html#getrecentshippositions" class="tsd-kind-icon">get<wbr>Recent<wbr>Ship<wbr>Positions</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="controllers_aismessagecontroller.default.html#createaismessages" class="tsd-kind-icon">create<wbr>Ais<wbr>Messages</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="controllers_aismessagecontroller.default.html#deleteaismessagesfiveminutesolderthantime" class="tsd-kind-icon">delete<wbr>Ais<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="controllers_aismessagecontroller.default.html#getpositions" class="tsd-kind-icon">get<wbr>Positions</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,22 +117,80 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="getrecentshippositions" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Recent<wbr>Ship<wbr>Positions</h3>
+					<a name="createaismessages" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Ais<wbr>Messages</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Recent<wbr>Ship<wbr>Positions<span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ServerResponse</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Ais<wbr>Messages<span class="tsd-signature-symbol">(</span>request<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IncomingMessage</span>, response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ServerResponse</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/controllers/AisMessageController.ts#L6">src/controllers/AisMessageController.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/controllers/AisMessageController.ts#L9">src/controllers/AisMessageController.ts:9</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>request: <span class="tsd-signature-type">IncomingMessage</span></h5>
+								</li>
+								<li>
+									<h5>response: <span class="tsd-signature-type">ServerResponse</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="deleteaismessagesfiveminutesolderthantime" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Ais<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Ais<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time<span class="tsd-signature-symbol">(</span>_request<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IncomingMessage</span>, response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ServerResponse</span>, requestUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/controllers/AisMessageController.ts#L35">src/controllers/AisMessageController.ts:35</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_request: <span class="tsd-signature-type">IncomingMessage</span></h5>
+								</li>
+								<li>
+									<h5>response: <span class="tsd-signature-type">ServerResponse</span></h5>
+								</li>
+								<li>
+									<h5>requestUrl: <span class="tsd-signature-type">URL</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getpositions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Positions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Positions<span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ServerResponse</span>, requestUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/controllers/AisMessageController.ts#L46">src/controllers/AisMessageController.ts:46</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>response: <span class="tsd-signature-type">ServerResponse</span></h5>
+								</li>
+								<li>
+									<h5>requestUrl: <span class="tsd-signature-type">URL</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -161,7 +221,13 @@
 								<a href="controllers_aismessagecontroller.default.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="controllers_aismessagecontroller.default.html#getrecentshippositions" class="tsd-kind-icon">get<wbr>Recent<wbr>Ship<wbr>Positions</a>
+								<a href="controllers_aismessagecontroller.default.html#createaismessages" class="tsd-kind-icon">create<wbr>Ais<wbr>Messages</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="controllers_aismessagecontroller.default.html#deleteaismessagesfiveminutesolderthantime" class="tsd-kind-icon">delete<wbr>Ais<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="controllers_aismessagecontroller.default.html#getpositions" class="tsd-kind-icon">get<wbr>Positions</a>
 							</li>
 						</ul>
 					</li>

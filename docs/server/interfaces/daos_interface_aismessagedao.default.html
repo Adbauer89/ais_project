@@ -89,8 +89,11 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="daos_interface_aismessagedao.default.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="daos_interface_aismessagedao.default.html#deletemessagesfiveminutesolderthantime" class="tsd-kind-icon">delete<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="daos_interface_aismessagedao.default.html#find" class="tsd-kind-icon">find</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="daos_interface_aismessagedao.default.html#findall" class="tsd-kind-icon">find<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="daos_interface_aismessagedao.default.html#findmostrecentpositionformmsi" class="tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Position<wbr>For<wbr>Mmsi</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="daos_interface_aismessagedao.default.html#findmostrecentpositionsintile" class="tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Positions<wbr>InTile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="daos_interface_aismessagedao.default.html#findmostrecentshippositions" class="tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Ship<wbr>Positions</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="daos_interface_aismessagedao.default.html#insert" class="tsd-kind-icon">insert</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="daos_interface_aismessagedao.default.html#insertbatch" class="tsd-kind-icon">insert<wbr>Batch</a></li>
@@ -113,7 +116,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="daos_interface_cruddao.default.html">default</a>.<a href="daos_interface_cruddao.default.html#delete">delete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/CrudDao.ts#L7">src/daos/interface/CrudDao.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/CrudDao.ts#L7">src/daos/interface/CrudDao.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -123,6 +126,29 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="deletemessagesfiveminutesolderthantime" class="tsd-anchor"></a>
+					<h3>delete<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/AisMessageDao.ts#L9">src/daos/interface/AisMessageDao.ts:9</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>time: <span class="tsd-signature-type">Date</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -137,7 +163,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="daos_interface_cruddao.default.html">default</a>.<a href="daos_interface_cruddao.default.html#find">find</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/CrudDao.ts#L5">src/daos/interface/CrudDao.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/CrudDao.ts#L5">src/daos/interface/CrudDao.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -161,7 +187,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="daos_interface_cruddao.default.html">default</a>.<a href="daos_interface_cruddao.default.html#findall">findAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/CrudDao.ts#L6">src/daos/interface/CrudDao.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/CrudDao.ts#L6">src/daos/interface/CrudDao.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -175,6 +201,52 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="findmostrecentpositionformmsi" class="tsd-anchor"></a>
+					<h3>find<wbr>Most<wbr>Recent<wbr>Position<wbr>For<wbr>Mmsi</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Position<wbr>For<wbr>Mmsi<span class="tsd-signature-symbol">(</span>mmsi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/AisMessageDao.ts#L7">src/daos/interface/AisMessageDao.ts:7</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>mmsi: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="findmostrecentpositionsintile" class="tsd-anchor"></a>
+					<h3>find<wbr>Most<wbr>Recent<wbr>Positions<wbr>InTile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Positions<wbr>InTile<span class="tsd-signature-symbol">(</span>tileId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/AisMessageDao.ts#L8">src/daos/interface/AisMessageDao.ts:8</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tileId: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="findmostrecentshippositions" class="tsd-anchor"></a>
 					<h3>find<wbr>Most<wbr>Recent<wbr>Ship<wbr>Positions</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -184,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/AisMessageDao.ts#L6">src/daos/interface/AisMessageDao.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/AisMessageDao.ts#L6">src/daos/interface/AisMessageDao.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -202,7 +274,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="daos_interface_cruddao.default.html">default</a>.<a href="daos_interface_cruddao.default.html#insert">insert</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/CrudDao.ts#L4">src/daos/interface/CrudDao.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/CrudDao.ts#L4">src/daos/interface/CrudDao.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -225,7 +297,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/AisMessageDao.ts#L5">src/daos/interface/AisMessageDao.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/AisMessageDao.ts#L5">src/daos/interface/AisMessageDao.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -249,7 +321,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="daos_interface_cruddao.default.html">default</a>.<a href="daos_interface_cruddao.default.html#update">update</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/de43985/server/src/daos/interface/CrudDao.ts#L8">src/daos/interface/CrudDao.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/Adbauer89/ais_project/blob/08a481c/server/src/daos/interface/CrudDao.ts#L8">src/daos/interface/CrudDao.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -288,11 +360,20 @@
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="daos_interface_aismessagedao.default.html#delete" class="tsd-kind-icon">delete</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="daos_interface_aismessagedao.default.html#deletemessagesfiveminutesolderthantime" class="tsd-kind-icon">delete<wbr>Messages<wbr>Five<wbr>Minutes<wbr>Older<wbr>Than<wbr>Time</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="daos_interface_aismessagedao.default.html#find" class="tsd-kind-icon">find</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="daos_interface_aismessagedao.default.html#findall" class="tsd-kind-icon">find<wbr>All</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="daos_interface_aismessagedao.default.html#findmostrecentpositionformmsi" class="tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Position<wbr>For<wbr>Mmsi</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="daos_interface_aismessagedao.default.html#findmostrecentpositionsintile" class="tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Positions<wbr>InTile</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="daos_interface_aismessagedao.default.html#findmostrecentshippositions" class="tsd-kind-icon">find<wbr>Most<wbr>Recent<wbr>Ship<wbr>Positions</a>
