@@ -103,7 +103,7 @@ export default class TileDaoMongo extends DaoMongoCrud<Tile> implements CrudDao<
      * @param longitude
      * @param scale
      */
-    async findTileByCoordinates(latitude: number, longitude: number, scale: number): Promise<Tile> {
+    async findTileByCoordinates(latitude: number, longitude: number, scale: number): Promise<Tile | null> {
         const queryObject = {
             image_west: {$lte: longitude},
             image_east: {$gt: longitude},
@@ -113,6 +113,10 @@ export default class TileDaoMongo extends DaoMongoCrud<Tile> implements CrudDao<
 
 
         const tile = await this.database.collection(this.collectionName).findOne(queryObject, {projection: {image_file: 0}});
+
+        if (!tile ) {
+            return null
+        }
         // @ts-ignore
         // Cannot use reflection with typescript, so the ModelImpl prototype is used to call its static method.
         return this.mongoModel.constructor.fromJson(JSON.stringify(tile));
